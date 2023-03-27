@@ -1,0 +1,25 @@
+@page "/"
+
+<div class="question-wrapper">
+    @if (!string.IsNullOrEmpty(_character))
+    {
+        <img src="images/@(_character).jpg" class="mb-3"/>
+        <div class="action-button" @onclick="Reset">
+            RESTART
+        </div>
+    }
+    else
+    {
+        <div class="question">
+            @_questions[_answers.Count]
+        </div>
+        <div class="buttons">
+            <div class="action-button button-secondary mr-3" @onclick="@(() => HandleAnswer(false))">
+                NO
+            </div>
+            <div class="action-button" @onclick="@(() => HandleAnswer(true))">
+                YES
+            </div>
+        </div>
+    }
+</div>
